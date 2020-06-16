@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div id="outer">
+
+        <div class="gutter"></div>
+
+        <div id="main">
+
+            <div id="main-top">
+                <a href="/" class="button is-text">&lt; return to main menu</a>
+            </div>
+            
+            <h1 class="title">train the model</h1>
+            
+            <div>
+                <canvas id="canvas" width="300" height="300"></canvas>
+            </div>
+
+            <div id="q-container">
+
+                {% if msg %}
+                    <p class="small-text">{{ msg }}</p>
+                {% endif %}
+
+                <p class="bigger-text">write a "{{q}}"</p>
+            </div>
+
+            <div id="buttons">
+                <form id="train-form" action="/train" method="POST" autocomplete="off">
+                    <input id="pixels" name="pixels" type="hidden" />
+                    <input id="question" name="question" type="hidden" value="{{q}}" />
+                    <button type="button" class="button is-success" onclick="sendTrainingData()">add training data</button>
+                    <button type="button" class="button is-info" onclick="resetCanvas()">clear</button>
+                </form>
+            </div>
+
+            <div id="other-buttons">
+                <a onclick="trainInfo()" href="/train-model" class="button is-small">train the model</a>
+            </div>
+            
+        </div>
+
+        <div class="gutter"></div>
+
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            startCanvas()
+        })
+
+        function trainInfo() {
+            alert('training may take a while, a message will appear on the page when finished')
+        }
+    </script>
+
+{% endblock %}

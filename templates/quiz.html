@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div id="outer">
+
+        <div class="gutter"></div>
+
+        <div id="main">
+
+            <div id="main-top">
+                <a href="/" class="button is-text">&lt; return to main menu</a>
+            </div>
+            
+            <h1 class="title">quiz mode</h1>
+
+            <div>
+                <canvas id="canvas" width="300" height="300"></canvas>
+            </div>
+
+            <div id="q-container">
+                {% if q == 'done' %}
+                    <p class="bigger-text">quiz complete, good job!</p>
+                {% else %}
+                    <p class="bigger-text">write a "{{q}}"</p>
+                {% endif %}
+            </div>
+
+            <div id="buttons">
+                <form id="quiz-form" action="/quiz" method="POST">
+                    <input id="pixels" name="pixels" type="hidden" />
+                    <input id="question" name="question" type="hidden" value="{{q}}" />
+                    {% if q == 'done' %}
+                        <button disabled type="button" class="button is-success" onclick="sendQuizData()">go back to reset quiz</button>
+                    {% else %}
+                        <button type="button" class="button is-success" onclick="sendQuizData()">check my answer</button>
+                    {% endif %}
+                    <button type="button" class="button is-info" onclick="resetCanvas()">clear</button>
+                </form>
+            </div>
+
+
+            <!-- example item: ('TO', 'と', 0) -->
+            <table class="table is-narrow" id="progress-table">
+            {% for row in progress %}
+                <tr>
+                    {% for r in row %}
+                        {% if r[1] %}
+                            {% if r[2] == 1 %}
+                                <td class="progress-td-good">{{ r[1] }}</td>
+                            {% elif r[2] == 2 %}
+                                <td class="progress-td-bad">{{ r[1] }}</td>
+                            {% else %}
+                                <td class="progress-td-mada">...</td>
+                            {% endif %}
+                        {% else %}
+                            <td></td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            </table>
+
+        </div>
+
+        <div class="gutter"></div>
+
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            startCanvas()
+        })
+    </script>
+
+{% endblock %}

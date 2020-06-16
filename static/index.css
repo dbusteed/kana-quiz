@@ -1,0 +1,105 @@
+html {
+    background-color: rgb(231, 231, 231);
+}
+
+body {
+    font-family: sans-serif;
+    padding-top: 1rem;
+    padding-bottom: 4rem;
+}
+
+.main-page {
+    padding-top: 2rem;
+}
+
+#outer {
+    display: flex;
+    flex-direction: row;
+}
+
+.gutter {
+    flex: 1 0 0;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1 0 0;
+}
+
+#main-top {
+    margin-bottom: 1rem;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}    
+
+.box p {
+    text-align: center;
+}
+
+#navigation {
+    margin-top: 2rem;
+}
+
+#navigation p {
+    margin-top: 1rem;
+}
+
+#other-buttons {
+    margin-top: 1rem;
+}
+
+.small-text {
+    font-size: .9rem;
+    margin-bottom: 1rem;
+}
+
+.big-text {
+    font-size: 1rem;
+}
+
+.bigger-text {
+    font-size: 1.25rem;
+}
+
+#q-container {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#canvas {
+    border: 1px solid gray;
+    background-color: white;
+}
+
+#progress-table {
+    margin-top: 2rem;
+}
+
+#progress-table td {
+    border: 1px solid gray;
+}
+
+.progress-td-good {
+    background-color: #48c77480;
+}
+
+.progress-td-bad {
+    background-color: #f1466880;
+}
+
+@media only screen and (max-width: 700px) {
+    #main {
+        flex: 9 0 0;
+    }
+}
