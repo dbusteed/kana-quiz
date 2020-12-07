@@ -33,3 +33,5 @@ mdl.fit(X_train, y_train)
 score = mdl.score(X_test, y_test)
 
 print(f"score: {score}")
+
+# score: 0.8878504672897196
