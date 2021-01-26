@@ -22,19 +22,18 @@ a machine learning web app that helps users practice writing Hiragana characters
 ### 1) environment setup
 * clone the repo
 * create and start a virtual environment (optional)
-* install modules:
-    ```
-    pip install -r requirements.txt
-    ```
+* install the following modules:
+    * tensorflow
+    * numpy (might come with tensorflow)
+    * bidict
+    * flask
+    * flask_cors
+    * matplotlib
 
 ### 2) app setup
-* compile training data:
+* build the CNN model:
     ```
-    python scripts/build_data_file.py
-    ```
-* build the ML model:
-    ```
-    python scripts/train_model.py
+    python scripts/build_model.py
     ```
 * run the app:
     ```
@@ -43,16 +42,8 @@ a machine learning web app that helps users practice writing Hiragana characters
 * go to [localhost:5000](http://localhost:5000)
 
 ### 3) useful scripts
-* `scripts/build_data_file.py`
-    * combines data files in **data/** into a single file
-* `scripts/sep_data_fil.py`
-    * separates **data.csv** into multiple files
-    * this was done just so i could push the files to GitHub
-* `scripts/train_model.py`
-    * uses **data.csv** and builds the ML model 
-* `scripts/model_testing.py`
-    * shows the out-of-sample score for the ML model
-    * use this to test hyperparameters / other models
+* `scripts/model_development.ipynb`
+    * notebook for developing / tuning the CNN model
 * `scripts/data_distribution.py`
     * shows the distribution of instances within the dataset
     * ideally, this should be uniform across the 46 characters

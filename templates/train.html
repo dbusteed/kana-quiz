@@ -14,11 +14,10 @@
             <h1 class="title">train the model</h1>
             
             <div>
-                <canvas id="canvas" width="300" height="300"></canvas>
+                <canvas id="canvas" width="200" height="200"></canvas>
             </div>
 
             <div id="q-container">
-
                 {% if msg %}
                     <p class="small-text">{{ msg }}</p>
                 {% endif %}
@@ -34,10 +33,6 @@
                     <button type="button" class="button is-info" onclick="resetCanvas()">clear</button>
                 </form>
             </div>
-
-            <div id="other-buttons">
-                <a onclick="trainInfo()" href="/train-model" class="button is-small">train the model</a>
-            </div>
             
         </div>
 
@@ -49,10 +44,6 @@
         $(document).ready(function() {
             startCanvas()
         })
-
-        function trainInfo() {
-            alert('training may take a while, a message will appear on the page when finished')
-        }
     </script>
 
 {% endblock %}
