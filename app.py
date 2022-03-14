@@ -1,7 +1,7 @@
 import numpy as np
 from bidict import bidict
 from flask import Flask, render_template, request, session, redirect, url_for
-from flask_cors import CORS
+# from flask_cors import CORS
 from random import choice
 from tensorflow import keras
 
@@ -52,7 +52,7 @@ QUIZ_PROG = [
 
 # app set up
 app = Flask(__name__)
-CORS(app)
+# CORS(app)
 app.secret_key = 'something_sneaky'
 
 
@@ -69,7 +69,7 @@ def train_get():
 
     #
     #   OPTION 1:
-    #       grab a random character that has few instances
+    #       grab a character that has few instances
     #       in the training data compared to other chars
     #
     labels = np.load("data/labels.npy")
@@ -77,7 +77,8 @@ def train_get():
     for label in labels:
         count[label] += 1
     count = sorted(count.items(), key=lambda x: x[1])
-    q = choice(count[:len(count)//4])[0]
+    # q = choice(count[:len(count)//4])[0]
+    q = count[0][0]
 
     #
     #   OPTION 2:
@@ -97,7 +98,7 @@ def train_post():
 
     pixels_str = request.form['pixels']
     pixels = pixels_str.split(',')
-    img = np.array(pixels).astype(float).reshape(1, 100, 100)
+    img = np.array(pixels).astype(float).reshape(1, 50, 50)
 
     all_imgs = np.load("data/imgs.npy")
     all_imgs = np.vstack([all_imgs, img])
@@ -122,7 +123,7 @@ def practice_post():
 
         pixels_str = request.form['pixels']
         pixels = pixels_str.split(',')
-        img = np.array(pixels).astype(float).reshape(1, 100, 100, 1)
+        img = np.array(pixels).astype(float).reshape(1, 50, 50, 1)
 
         model = keras.models.load_model('kana.model')
 
@@ -170,7 +171,7 @@ def quiz_post():
         question = request.form['question']
         pixels_str = request.form['pixels']
         pixels = pixels_str.split(',')
-        img = np.array(pixels).astype(float).reshape(1, 100, 100, 1)
+        img = np.array(pixels).astype(float).reshape(1, 50, 50, 1)
 
         model = keras.models.load_model('kana.model')
 
@@ -202,4 +203,5 @@ if __name__ == '__main__':
     # these are just settings for developing to allow
     # connection to the dev server from different devices,
     # a real webserver would be used for a legit deployment
-    app.run(host='0.0.0.0', port=8082, threaded=True)
+    # app.run(host='0.0.0.0', port=8082, threaded=True)
+    app.run()

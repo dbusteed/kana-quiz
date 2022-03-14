@@ -1,31 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
-
-    <div id="outer" class="main-page">
-        
-        <div class="gutter"></div>
-
-        <div id="main">
-            <h1 class="title">hiragana quiz</h1>
-            <div id="navigation">
-                <div class="box">
-                    <a class="button is-info" href="/practice">practice mode</a>
-                    <p>practice writing Hiragana characters</p>
-                </div>
-                <div class="box">
-                    <a class="button is-info" href="/quiz">quiz mode</a>
-                    <p>test yourself by writing the entire Hiragana character set</p>
-                </div>
-                <div class="box">
-                    <a class="button is-info" href="/train">train the model</a>
-                    <p>improve the predictive model by writing characters.</p>
-                    <p style="font-weight: bold;">only do this if you are experienced with Hiragana!</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="gutter"></div>
-
+  
+  <div class="main-container">
+    <h1 class="title">hiragana quiz</h1>
+    <div>
+      <div class="box">
+        <a class="button is-info" href="/practice">practice mode</a>
+        <p>practice writing Hiragana characters</p>
+      </div>
+      <div class="box">
+        <a class="button is-info" href="/quiz">quiz mode</a>
+        <p>test yourself by writing the entire Hiragana character set</p>
+      </div>
+      <div class="box">
+        <a class="button is-info" href="/train">train the model</a>
+        <p>improve the predictive model by writing characters.</p>
+        <p style="font-weight: bold;">only do this if you are experienced with Hiragana!</p>
+      </div>
     </div>
+  </div>
 
 {% endblock %}
